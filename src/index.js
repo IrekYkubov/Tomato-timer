@@ -1,6 +1,7 @@
 import './scss/index.scss';
 import main from './js/main';
-import { newTask } from './js/task';
+import { Timer } from './js/timer'
 
-newTask.plusCounter();
-console.log(newTask);
+
+const timer = new Timer([{time: 20, pause: 5, bigPause: 15, task : ['Решить задачу', 'Отправить на платформу']}]);
+timer.init();

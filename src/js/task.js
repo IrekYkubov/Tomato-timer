@@ -1,4 +1,4 @@
-class Task {
+export class Task {
   #name;
   #count;
   #id;
@@ -26,5 +26,3 @@ class Task {
     return this.#id;
   }
 }
-
-export const newTask = new Task('Решить задачу');

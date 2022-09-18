@@ -1,8 +1,11 @@
-import { Task } from './task'
+import { Task } from './task';
+let instance;
 export class Timer {
   #taskItem = [];
   #activeTask = [];
   constructor(param) {
+    if (instance) return instance;
+    instance = this;
     this.param = param;
   }
   get taskItem() {
@@ -23,7 +26,7 @@ export class Timer {
       optionTask.pause ? optionTask.pause : optionTask.pause = 5;
       optionTask.bigPause ? optionTask.bigPause : optionTask.bigPause = 15;
       for (let i = 0; i < optionTask.task.length; i++) {
-        this.#taskItem.push(new Task(optionTask.task[i], optionTask.time));
+        this.#taskItem.push(new Task(optionTask.task[i], optionTask.time, optionTask.importance));
       }
     }
   }

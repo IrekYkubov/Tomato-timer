@@ -1,51 +1,67 @@
 export class Task {
-  #name;
-  #count;
-  #id;
-  #important;
-  constructor(name, count = 0, importance) {
-    this.#name = name;
-    this.#count = count;
-    this.#important = importance;
-    this.#id = Math.floor(Math.random() * 10e5);
-  }
+    #id;
+    name;
+    #counter;
+    constructor(name, counter = 0) {
+        this.#id = Math.round(Math.random() * 10000000);
+        this.name = name;
+        this.#counter = counter;
+    }
 
-  plusCounter() {
-    return this.#count += 1;
-  }
+    getId() { return this.#id; }
 
-  newName(name) {
-    this.#name = name;
-  }
+    setName(newName) {
+        this.name = newName;
+    }
 
-  get name() {
-    return this.#name;
-  }
-  get count() {
-    return this.#count;
-  }
-  get important() {
-    return this.#important;
-  }
-  get id() {
-    return this.#id;
-  }
+    getName() { return this.name; }
+
+    incrementCount() {
+        this.#counter++;
+    }
+    clearCounter() {
+        this.#counter = 0;
+    }
+
+    getCounter() { return this.#counter; }
+
+    getImportance() {
+        throw new Error('Not implemented');
+    }
 }
 
-class importantTask extends Task {
-  constructor (importance) {
-    this.importance = importance;
-  }
+export class ImportantTask extends Task {
+    #importance;
+    constructor (name) { 
+        super();
+        this.name = name;
+        this.#importance = 'important';
+    }
+    getImportance() {
+        return this.#importance;
+    }
 }
 
-class standartTask extends Task {
-  constructor (importance) {
-    this.importance = importance;
-  }
+export class DefaultTask extends Task {
+    #importance;
+    constructor (name) { 
+        super();
+        this.name = name;
+        this.#importance = 'default';
+    }
+    getImportance() {
+        return this.#importance;
+    }
 }
 
-class simpleTask extends Task {
-  constructor (importance) {
-    this.importance = importance;
-  }
+export class SosoTask extends Task {
+    #importance;
+    constructor (name) { 
+        super();
+        this.name = name;
+        this.#importance = 'so-so';
+    }
+    getImportance() {
+        return this.#importance;
+    }
 }

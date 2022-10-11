@@ -4,21 +4,28 @@ import { DefaultTask } from './task.js';
 import { SosoTask } from './task.js';
 
 export class ConrollerTomato {
+    statusTimer = false;
     constructor() {
 
     }
 
     static setEventListenerToStart(btnStart) {
         btnStart.addEventListener('click', () => {
-            const tomato = new Tomato();
-            tomato.runTimer();
+            if(this.statusTimer != true) {
+                const tomato = new Tomato();
+                tomato.runTimer();
+            }
+            this.statusTimer = true;
         });
     }
 
     static setEventListenerToStop(btnStop) {
         btnStop.addEventListener('click', () => {
-            const tomato = new Tomato();
-            tomato.stopTimer();
+            if(this.statusTimer != false) {
+                const tomato = new Tomato();
+                tomato.stopTimer();
+            }
+            this.statusTimer = false;
         });
     }
 
